@@ -1,5 +1,5 @@
 pragma solidity ^0.4.25;
-
+// Handles all mathematical functions in a way the EVM can handle 
 contract SafeMath {
   function safeMul(uint a, uint b) internal pure returns (uint) {
     uint c = a * b;
@@ -18,7 +18,7 @@ contract SafeMath {
     return c;
   }
 }
-
+// Simple contract for basic Token Functionality (ERC20 Standard)
 contract Token {
   function totalSupply() public returns (uint256);
   function balanceOf(address) public returns (uint256) ;
@@ -33,7 +33,7 @@ contract Token {
   uint public decimals;
   string public name;
 }
-
+// Contract that handles ERC20 functions 
 contract StandardToken is Token {
 
   function transfer(address _to, uint256 _value) public returns (bool) {
@@ -81,7 +81,7 @@ contract StandardToken is Token {
 
   uint256 public totalSupply;
 }
-
+// Allows for minting and burning of the "BEX token" as a pairing for the exchange
 contract ReserveToken is StandardToken, SafeMath {
   address public minter;
   constructor(ReserveToken) public {
@@ -119,7 +119,7 @@ contract AccountLevelsTest is AccountLevels {
     return accountLevels[user];
   }
 }
-
+// The Meat and drip of all functios in this contract. Run this contract for deployment
 contract BEX is SafeMath {
   address public admin; //the admin address
   address public feeAccount; //the account that will receive fees
